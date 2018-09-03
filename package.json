@@ -1,0 +1,30 @@
+{
+  "name": "namaste_backend",
+  "version": "1.0.0",
+  "description": "nodejs mongodb expressjs to provide database access to namaste app",
+  "main": "namaste.js",
+  "scripts": {
+    "start": "node namaste.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavkapoorr/namaste_backend.git"
+  },
+  "keywords": [
+    "namaste",
+    "nodejs",
+    "expressjs",
+    "mongodb"
+  ],
+  "author": "Pranav Kapoor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranavkapoorr/namaste_backend/issues"
+  },
+  "homepage": "https://github.com/pranavkapoorr/namaste_backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.16"
+  }
+}
