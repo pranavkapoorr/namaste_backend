@@ -14,10 +14,20 @@ module.exports = function(app, db) {
         });
     });
     //retreive
-    app.get('/users/:id', (req, res) => {
+    app.get('/users/uid/:id', (req, res) => {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         db.collection('users').findOne(details, (err, item) => {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                    res.send(item!=null?item:"User doesn't exist!");
+            }
+        });
+    });
+    //retreive all
+    app.get('/users/all', (req, res) => {
+        db.collection('users').find({}).toArray((err, item) => {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
