@@ -13,10 +13,22 @@ module.exports = function(app, db) {
             }
         });
     });
-    //retreive
+    //retreive by id
     app.get('/users/uid/:id', (req, res) => {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
+        db.collection('users').findOne(details, (err, item) => {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                    res.send(item!=null?item:"User doesn't exist!");
+            }
+        });
+    });
+    //retrieve by number
+    app.get('/users/uphone/:phone', (req, res) => {
+        const phone = req.params.phone;
+        const details = { 'phone': phone };
         db.collection('users').findOne(details, (err, item) => {
             if (err) {
                 res.send({'error':'An error has occurred'});
