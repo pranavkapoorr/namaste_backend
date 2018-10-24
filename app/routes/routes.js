@@ -47,6 +47,17 @@ module.exports = function(app, db) {
             }
         });
     });
+    //retrieve all except current
+    app.post('/users/all', (req, res) => {
+        var username = req.body.username;
+        db.collection('users').find({'username':{'$ne':username}}).toArray((err, item) => {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                    res.send(item!=null?item:"User doesn't exist!");
+            }
+        });
+    });
     //update
     app.put('/users/:id', (req, res) => {
         const id = req.params.id;
