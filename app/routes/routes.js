@@ -47,10 +47,10 @@ module.exports = function(app, db) {
             }
         });
     });
-    //retrieve all except current
+    //retrieve all except current and already liked and disliked
     app.post('/users/all', (req, res) => {
-        var username = req.body.username;
-        db.collection('users').find({'username':{'$ne':username}}).toArray((err, item) => {
+        var usernames = req.body.usernames;
+        db.collection('users').find({'username':{'$nin':usernames}}).toArray((err, item) => {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
